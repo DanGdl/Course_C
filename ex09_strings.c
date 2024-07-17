@@ -1,25 +1,29 @@
 /*
-compile: gcc -Wall -Wextra -Wpedantic ex09_array.c -o ex09   OR: gcc ex09_array.c -o ex09
+compile: gcc -Wall -Wextra -Wpedantic ex09_strings.c -o ex09   OR: gcc ex09_strings.c -o ex09
 run: ./ex09
 */
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+
+#define LEN_ARRAY(x) (sizeof(x)/sizeof(x[0]))
+#define LEN_STD(x) (sizeof(x)/sizeof(x[0])-1)
 
 int main(void) {
-    // array without specified size (compiler will set it)
+    // array without specified size (compiler will set it). This is immutable array!!!
     char arr1[] = "That's array!";
 
     // array for 28 char elements, filled with zeroes
     char arr2[56] = { 0 };
 
-    for (unsigned int i = 0; i < (sizeof(arr1)/sizeof(arr1[0])); i++) {
+    for (unsigned int i = 0; i < LEN_ARRAY(arr1); i++) {
         arr2[i] = arr1[i];
     }
 
     // strnlen
-    printf("Arr1 %s, strlen %lu, len %lu\n", arr1, strlen(arr1), sizeof(arr1)/sizeof(arr1[0]));
-    printf("Arr2 %s, strlen %lu, len %lu\n", arr2, strlen(arr2), sizeof(arr2)/sizeof(arr2[0]));
+    printf("Arr1 %s, strlen %lu, len %lu\n", arr1, strlen(arr1), LEN_ARRAY(arr1));
+    printf("Arr2 %s, strlen %lu, len %lu\n", arr2, strlen(arr2), LEN_ARRAY(arr2));
 
     char* ptr = strstr(arr1, "array");
     if (ptr == NULL) {
@@ -69,7 +73,7 @@ int main(void) {
 
     memmove(arr2 + strlen(arr2), arr2, strlen(arr2));
     printf("arr2 after memmove: %s\n", arr2);
-    for (unsigned int i = 0; i < (sizeof(arr2)/sizeof(arr2[0])); i++) {
+    for (unsigned int i = 0; i < LEN_ARRAY(arr2); i++) {
         printf("arr2 symbol %d is %c\n", i, arr2[i]);
     }
     return 0;

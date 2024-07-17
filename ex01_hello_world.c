@@ -3,7 +3,6 @@ compile: gcc -Wall -Wextra -Wpedantic ex01_hello_world.c -o ex01   OR: gcc ex01_
 run: ./ex01
 */
 
-
 #include <stdio.h>
 
 // int main(void) {                 // -> can receive arguments, but don't use them

@@ -7,37 +7,60 @@ run: ./ex03
 
 int main(void) {
     int i = 2; // signed by default
-    signed int si = -7;
+    int i2 = -7;
     
-    int v = si;
-    v += i;
-    // OR: int v = si + i;
-    printf("%d + %d = %d\n", si, i, v);
+    int v = i2 + i;
+    printf("%d + %d = %d\n", i2, i, v);
 
-    v = si - i;
-    printf("%d - %d = %d\n", si, i, v);
-    printf("%d * %d = %d\n", si, i, si * i);
+    v = i2 - i;
+    printf("%d - %d = %d\n", i2, i, v);
+    printf("%d * %d = %d\n", i2, i, i2 * i);
     // WARNING:
-    printf("%d / %d = %d\n", si, i, si / i);
-    printf("%d / %d = %f\n", si, i, 1.0F * si / i);
-
-    // postfix increment: si++
-    // postfix decrement: si--
-    // prefix increment: ++si
-    // prefix decrement: --si
+    printf("%d / %d = %d\n", i2, i, i2 / i);
+    printf("%d / %d = %f\n", i2, i, 1.0F * i2 / i);
 
     // remainder:
-    v = si;
-    v %= 4; // v = si % 4
-    printf("%d %% %d = %d\n", si, 4, v);
+    v = i2;
+    v %= 4; // v = i2 % 4
+    printf("%d %% %d = %d\n", i2, 4, v);
+
+    // short notation
+    v = i2;
+    v += i; // v = v + i;
+    v -= i; // v = v - i;
+    v *= i; // v = v * i;
+    v /= i; // v = v / i;
+    v %= i; // v = v % i;
+
+    // postfix increment: i++ => use i and then add 1 to i
+    // postfix decrement: i-- => use i and then substract 1 from i
+    // prefix increment:  ++i => i = i + 1 or i += 1 => add 1 to i and then use i
+    // prefix decrement:  --i => i = i - 1 or i -= 1 => substract 1 to i and then use i
 
     // Comparison:
-    printf("%d equals to %d => %d\n", si, i, si == i);
-    printf("%d not equals to %d => %d\n", si, i, si != i);
-    printf("%d less then %d => %d\n", si, i, si < i);
-    printf("%d less or equal to %d => %d\n", si, i, si <= i);
-    printf("%d bigger then %d => %d\n", si, i, si > i);
-    printf("%d bigger or equal to %d => %d\n", si, i, si >= i);
+    printf("%d equals to %d => %d\n", i2, i,            i2 == i);
+    printf("%d not equals to %d => %d\n", i2, i,        i2 != i);
+    printf("%d less then %d => %d\n", i2, i,            i2 < i);
+    printf("%d less or equal to %d => %d\n", i2, i,     i2 <= i);
+    printf("%d bigger then %d => %d\n", i2, i,          i2 > i);
+    printf("%d bigger or equal to %d => %d\n", i2, i,   i2 >= i);
+
+    // BUGS!
+    unsigned int i3 = 19;
+    printf("%d equals to %d => %d\n", i3, i2,           i3 == i2);
+    printf("%d not equals to %d => %d\n", i3, i2,       i3 != i2);
+    printf("%d less then %d => %d\n", i3, i2,           i3 < i2);
+    printf("%d less or equal to %d => %d\n", i3, i2,    i3 <= i2);
+    printf("%d bigger then %d => %d\n", i3, i2,         i3 > i2);
+    printf("%d bigger or equal to %d => %d\n", i3, i2,  i3 >= i2);
+
+    // NO BUGS
+    printf("%d equals to %d => %d\n", i3, i2,           i2 >= 0 && i3 == (unsigned int) i2);
+    printf("%d not equals to %d => %d\n", i3, i2,       i2 >= 0 && i3 != (unsigned int) i2);
+    printf("%d less then %d => %d\n", i3, i2,           i2 >= 0 && i3 < (unsigned int) i2);
+    printf("%d less or equal to %d => %d\n", i3, i2,    i2 >= 0 && i3 <= (unsigned int) i2);
+    printf("%d bigger then %d => %d\n", i3, i2,         i2 >= 0 && i3 > (unsigned int) i2);
+    printf("%d bigger or equal to %d => %d\n", i3, i2,  i2 >= 0 && i3 >= (unsigned int) i2);
 
     return 0;
 }

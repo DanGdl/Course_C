@@ -10,19 +10,20 @@ void print_number(int i) {
     printf("Number %d\n", i);
 }
 
-// declaration
-void print_double(double d);
+// forward declaration
+int print_double(double d);
 
 int main(void) {
     int i = 15;
     print_number(i);
 
     double f = 50.25;
-    print_double(f);
+    int rc = print_double(f);
+    printf("rc %d\n", rc);
     return 0;
 }
 
 
-void print_double(double i) {
-    printf("Number %f\n", i);
+int print_double(double i) {
+    return printf("Number %f\n", i);
 }

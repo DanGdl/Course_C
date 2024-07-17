@@ -34,25 +34,25 @@ int main(void) {
     printf("%s, Enter a number in range %d...%d:\n", name, SCHAR_MIN, SCHAR_MAX);
     scanf("%"SCNd8, &i8);
 
-    printf("%s, Enter a number in range 0...%d:\n", name, UCHAR_MAX);
+    printf("%s, Enter a number in range 0...%u:\n", name, UCHAR_MAX);
     scanf("%"SCNu8, &u8);
 
     printf("%s, Enter a number in range %d...%d:\n", name, SHRT_MIN, SHRT_MAX);
     scanf("%"SCNd16, &i16);
 
-    printf("%s, Enter a number in range 0...%d:\n", name, USHRT_MAX);
+    printf("%s, Enter a number in range 0...%u:\n", name, USHRT_MAX);
     scanf("%"SCNu16, &u16);
 
-    printf("%s, Enter a number in range %"PRId32"...%"PRIu32":\n", name, ((uint32_t)(~0)/2) + 1, ((uint32_t)(~0))/2);
+    printf("%s, Enter a number in range %d...%d:\n", name, INT_MIN, INT_MAX);
     scanf("%"SCNd32, &i32);
 
-    printf("%s, Enter a number in range 0...%u:\n", name, (uint32_t)(~0));
+    printf("%s, Enter a number in range 0...%u:\n", name, INT_MAX);
     scanf("%"SCNu32, &u32);
 
-    printf("%s, Enter a number in range %"PRId64"...%"PRIu64":\n", name, (uint64_t)(~0)/2 + 1, (uint64_t)(~0)/2 );
+    printf("%s, Enter a number in range %ld...%ld:\n", name, LONG_MIN, LONG_MAX);
     scanf("%"SCNd64, &i64);
 
-    printf("%s, Enter a number in range 0...%"PRIu64":\n", name, (uint64_t)(~0));
+    printf("%s, Enter a number in range 0...%lu:\n", name, ULONG_MAX);
     scanf("%"SCNu64, &u64);
 
 

@@ -1,6 +1,6 @@
 /*
-compile: gcc -Wall -Wextra -Wpedantic ex04_inttypes.c -o ex04   OR: gcc ex04_inttypes.c -o ex04
-run: ./ex04
+compile: gcc -Wall -Wextra -Wpedantic ex12_inttypes.c -o ex12   OR: gcc ex12_inttypes.c -o ex12
+run: ./ex12
 */
 
 #include <stdio.h>

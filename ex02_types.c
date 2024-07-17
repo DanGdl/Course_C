@@ -13,11 +13,11 @@ int main(void) {
     unsigned int ui = 6;
     short int shi = 3;
     long int li = 4;
-    long int lli = 5;
+    long long int lli = 5;
     float f = 5;
     double d = 7;
     long double ld = 9;
-    
+
     printf("Type char: size %lu bytes, val %d\n", sizeof(n), n);                // print as number
     printf("Type char: size %lu bytes, val %c\n", sizeof(c), c);                // print as symbol
     printf("Type int: size %lu bytes, val %d\n", sizeof(i), i);
@@ -29,5 +29,11 @@ int main(void) {
     printf("Type float: size %lu bytes, val %f\n", sizeof(f), f);
     printf("Type double: size %lu bytes, val %f\n", sizeof(d), d);
     printf("Type long double: size %lu bytes, val %Lf\n", sizeof(ld), ld);
+
+    shi = (short) i; // narrowing
+    i = shi;
+    d = li;
+    li = d;
+    f = (float) d;
     return 0;
 }

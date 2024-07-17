@@ -6,7 +6,7 @@ run: ./ex04
 #include <stdio.h>
 
 int main(void) {
-    int end = 20;
+    const int end = 20;
 
     puts("FizzBuzz with while loop");
     int i = 0;
@@ -14,9 +14,9 @@ int main(void) {
         if (i % 15 == 0) {
             puts("FizzBuzz");
         } else if (i % 5 == 0) {
-            puts("Fizz");
-        } else if (i % 3 == 0) {
             puts("Buzz");
+        } else if (i % 3 == 0) {
+            puts("Fizz");
         } else {
             printf("%d\n", i);
         }
@@ -25,12 +25,12 @@ int main(void) {
     puts("FizzBuzz with do-while loop");
     i = 0;
     do  {
-        if (i % 15 == 0) {
+        if (i % 3 == 0 && i % 5 == 0) {
             puts("FizzBuzz");
         } else if (i % 5 == 0) {
-            puts("Fizz");
-        } else if (i % 3 == 0) {
             puts("Buzz");
+        } else if (i % 3 == 0) {
+            puts("Fizz");
         } else {
             printf("%d\n", i);
         }
@@ -39,27 +39,22 @@ int main(void) {
 
     puts("FizzBuzz with for loop");
     for (i = 0; i <= end; i++)  {
-        if (i % 15 == 0) {
-            puts("FizzBuzz");
-        } else if (i % 5 == 0) {
-            puts("Fizz");
-        } else if (i % 3 == 0) {
-            puts("Buzz");
-        } else {
-            printf("%d\n", i);
-        }
-    }
-
-    puts("FizzBuzz with for loop");
-    for (i = 0; i <= end; i++)  {
-        if (i % 15 == 0) {
-            puts("FizzBuzz");
-        } else if (i % 5 == 0) {
-            puts("Fizz");
-        } else if (i % 3 == 0) {
-            puts("Buzz");
-        } else if (i % 2 == 0) { // if i is even
-            continue;
+        if (i % 3 == 0 || i % 5 == 0) {
+           switch(i % 15) {
+           case 0:
+                puts("FizzBuzz");
+                break;
+            case 10:
+            case 5:
+                puts("Buzz");
+                break;
+            case 12:
+            case 9:
+            case 6:
+            case 3:
+                puts("Fizz");
+                break;
+            }
         } else {
             printf("%d\n", i);
         }
@@ -70,9 +65,9 @@ int main(void) {
         if (i % 15 == 0) {
             puts("FizzBuzz");
         } else if (i % 5 == 0) {
-            puts("Fizz");
-        } else if (i % 3 == 0) {
             puts("Buzz");
+        } else if (i % 3 == 0) {
+            puts("Fizz");
         } else if (i % 2 == 0) { // if i is even
             continue;
         } else {
@@ -88,9 +83,9 @@ int main(void) {
         if (i % 15 == 0) {
             puts("FizzBuzz");
         } else if (i % 5 == 0) {
-            puts("Fizz");
-        } else if (i % 3 == 0) {
             puts("Buzz");
+        } else if (i % 3 == 0) {
+            puts("Fizz");
         } else if (i % 2 == 0) { // if i is even
             continue;
         } else {
@@ -107,9 +102,9 @@ int main(void) {
         if (i % 15 == 0) {
             puts("FizzBuzz");
         } else if (i % 5 == 0) {
-            puts("Fizz");
-        } else if (i % 3 == 0) {
             puts("Buzz");
+        } else if (i % 3 == 0) {
+            puts("Fizz");
         } else if (i % 2 == 0) { // if i is even
             continue;
         } else {
@@ -130,18 +125,27 @@ int main(void) {
             break;
         case 10:
         case 5:
-            puts("Fizz");
+            puts("Buzz");
             break;
         case 12:
         case 9:
-        case 6: 
+        case 6:
         case 3:
-            puts("Buzz");
+            puts("Fizz");
             break;
         default:
             printf("%d\n", i);
         }
         i++;
     }
+
+    int age = 18;
+    if (age >= 18) {
+        puts("You can buy sigaretes");
+    } else {
+        puts("You can\'t buy sigaretes");
+    }
+    // via ternary operator
+    puts(age >= 18 ? "You can buy sigaretes" : "You can\'t buy sigaretes");
     return 0;
 }
