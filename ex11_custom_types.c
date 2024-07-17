@@ -5,6 +5,8 @@ run: ./ex11
 
 // enums, structs, unions, macroses
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <inttypes.h>
 
 #define UNUSED(x) ((void) x)
@@ -65,6 +67,16 @@ typedef union F2I {
     int32_t val_i;
 } F2I_t;
 
+
+typedef struct String {
+   unsigned long int cap;
+   unsigned long int len;
+   char values[];           // trailing array
+} String_t;
+
+
+typedef void (*FuncPointer_t)(const Student_t* const s);
+
 void student_print(const Student_t* const s) {
     if (s == NULL) return;
     printf("Student: Name %s, birthday %u.%u.%u, Course %s, grade %u\n",
@@ -84,7 +96,9 @@ int main(void) {
             .grade = 90,
         },
     };
-    student_print(&s1);
+     // student_print(&s1);
+    FuncPointer_t fp = student_print;
+    fp(&s1);
     Student_t* s1_ptr = &s1;
 
     printf("\nSizeof Student_t %lu bytes\n", sizeof(s1));
@@ -186,6 +200,19 @@ int main(void) {
     printf("Address of s.course.name %p\n",            (void*) &s.course.name);
     printf("Address of s.course.grade %p\n",           (void*) &s.course.grade);
 #pragma pack(pop)
+
+
+    #define LEN 50
+    String_t* str = NULL;
+    str = malloc(sizeof(*str) + LEN);       // allocate memory filled with random values
+    // str = calloc(1, sizeof(*str) + LEN); // allocate memory filled with zeroes
+    str->cap = 50;
+    str->len = 0;
+    memset(str->values, 0, sizeof(*str->values) * LEN);
+    const char source[] = "Some string";
+    memcpy(str->values, source, sizeof(source));
+    puts(str->values);
+    free(str);
 
     return 0;
 }

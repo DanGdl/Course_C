@@ -1,4 +1,4 @@
-Plan for C course
+﻿Plan for C course
 
 
 1. Intro
@@ -30,9 +30,10 @@ Execute: ./executable_name
 
 2.1 Build in types. Numeric types and print to stdout
 
-2.2 Flow control via loops and conditions (if-else + switch):
-while(condition) { /*stuff*/ }, do { /*stuff*/ } while(condition), for () { /*stuff*/ }
-
+2.2 Flow control via loops and conditions:
+while (condition) { /*stuff*/ }
+do { /*stuff*/ } while (condition)
+for () { /*stuff*/ }
 if (condition1) { /*stuff*/ } else if (condition2) { /*stuff*/ } else { /*stuff*/ }
 
 switch() {
@@ -42,30 +43,35 @@ case ...:
 case ...:
     break;
 default:
-
 }
+(if-else vs switch: https://www.youtube.com/watch?v=fjUG_y5ZaL4)
 
 - functions and headers:
 modifier return_type function_name(type1 name1, type2 name2, ...) {
     ...
 }
 
-H/w
+H/w (ex01 - ex05)
 Print to terminal different geometric figures:
 - write a function to draw a chessboard
-- write a function that requests from user sizes for rectangle (width and height) and draws it
-- write a function that requests from user size for triangle (height) and draws it
-- write a function that requests from user size for triangle (height) and draws isosceles non-right triangle
+- write a function draws rectangle 
+- write a function that draws triangle
+- write a function that draws isosceles non-right triangle
 
 
+2.3 Macros
+- constants
+- code generation
+- conditional compilation
 
-2.3 Arrays and pointers:
+2.4 Arrays and pointers:
 - pointers: & and *, arithmetic
+- endianess (https://en.wikipedia.org/wiki/Endianness)
 - arrays
 - strings
 - string functions
 
-2.4 IO:
+2.5 IO:
 - read from terminal: gets(), get_s(), scanf(), getchar() and their problems
 
 - arguments to main:
@@ -73,77 +79,45 @@ for (int i = 0; i < argc; i++) {
     puts(argv[i]);
 }
 
+H/w (ex06 - ex10)
+Print to terminal different geometric figures:
+- write a function that requests from user sizes for rectangle (width and height) and draws it
+- write a function that requests from user size for triangle (height) and draws it
+- write a function that requests from user size for triangle (height) and draws isosceles non-right triangle
+- implement anagram (replace symbols in string in revese order). Encoding: ASCII only
+- implement anagram with filter (no need to replace digist and non-letters). Encoding: ASCII only
 
 
-
-2.1. Types
+2.6. Types
+- derived data types (structures, unions, enums, typedef)
+- trailing arrays
 - function pointers
-- opaque pointers
 - dynamic allocation
-H/w:
-- implement anagram with filter
+- data structures (lists)
 
-2.2 Types
-- derived data types
-    - structures, unions, enums, typedef
-- encodings
-    - UTF-8
-H/w:
+H/w (ex11 - ex12)
+- create a generic struct via macros (linked list, array list) and test it
+
+2.7 Types
+- crossplatform types: inttypes.h (stdint.h):
+- Unicode
+
+H/w (ex13 - ex14)
 - support UTF-8 in anagram
-
-2.3 Marcos
-- endianess
-- constants
-- code generation
-H/w:
-- create a generic struct via macros (linked list or hash map)
-
-2.4 Crossplatform types: inttypes.h (stdint.h):
-int8_t i8 = -1;
-uint8_t u8 = 2;
-
-int16_t i16 = -3;
-uint16_t u16 = 4;
-
-int32_t i32 = -5;
-uint32_t u32 = 6;
-
-printf("Type int8_t: size %lu bytes, val %"PRId8"\n", sizeof(i8), i8);
-printf("Type uint8_t: size %lu bytes, val %"PRIu8"\n", sizeof(u8), u8);
-
-printf("Type int16_t: size %lu bytes, val %"PRId16"\n", sizeof(i16), i16);
-printf("Type uint16_t: size %lu bytes, val %"PRIu16"\n", sizeof(u16), u16);
-
-printf("Type int32_t: size %lu bytes, val %"PRId32"\n", sizeof(i32), i32);
-printf("Type uint32_t: size %lu bytes, val %"PRIu32"\n", sizeof(u32), u32);
-
-see also: sscanf
-
-// bitwise
-printf("%d & %d = %d\n", 0, 0, 0 & 0);
-printf("%d & %d = %d\n", 0, 1, 0 & 1);
-printf("%d & %d = %d\n", 1, 1, 1 & 1);
-
-printf("%d | %d = %d\n", 0, 0, 0 | 0);
-printf("%d | %d = %d\n", 0, 1, 0 | 1);
-printf("%d | %d = %d\n", 1, 1, 1 | 1);
-
-printf("%d ^ %d = %d\n", 0, 0, 0 ^ 0);
-printf("%d ^ %d = %d\n", 0, 1, 0 ^ 1);
-printf("%d ^ %d = %d\n", 1, 1, 1 ^ 1);
-// bits inversion
-printf("~%d = 0x%X\n", 8, ~8);
 
 
 3. Work with files
+- hashing
 - open/close, read/write, fflush, truncate
+- opaque pointers
 - file descriptors + standart descriptors
 - IO operations
-H/w:
-- read a text file and count a words frequency (or symbol frequency)
+
+H/w (ex15v-vex16)
+- calculate file's CRC
+- read a text file and count a symbol frequency (or symbol frequency)
 
 4. Compilation
-- preprocessor
 - compilation
 - linking
 - libraries, mangling
@@ -175,7 +149,7 @@ see also: math.h
 - semaphores
 - shared memory
 
-8. Treads
+8. Threads
 - pthreads, LWP
 - threads vs processes
 - sychronisation

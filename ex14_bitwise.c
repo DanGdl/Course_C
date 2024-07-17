@@ -1,6 +1,6 @@
 /*
-compile: gcc -Wall -Wextra -Wpedantic ex13_bitwise.c -o ex13   OR: gcc ex13_bitwise.c -o ex13
-run: ./ex13
+compile: gcc -Wall -Wextra -Wpedantic ex14_bitwise.c -o ex14   OR: gcc ex14_bitwise.c -o ex14
+run: ./ex14
 */
 
 // enums, structs, unions, macroses
