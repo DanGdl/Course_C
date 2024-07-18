@@ -93,10 +93,10 @@ Print to terminal different geometric figures:
 - trailing arrays
 - function pointers
 - dynamic allocation
-- data structures (lists)
+- data structures (lists, set)
 
 H/w (ex11 - ex12)
-- create a generic struct via macros (linked list, array list) and test it
+- create a generic struct via macros (linked list, array, set) and test it
 
 2.7 Types
 - crossplatform types: inttypes.h (stdint.h):
