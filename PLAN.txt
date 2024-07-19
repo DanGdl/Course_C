@@ -94,6 +94,7 @@ Print to terminal different geometric figures:
 - function pointers
 - dynamic allocation
 - data structures (lists, set)
+- hashing
 
 H/w (ex11 - ex12)
 - create a generic struct via macros (linked list, array, set) and test it
@@ -107,15 +108,24 @@ H/w (ex13 - ex14)
 
 
 3. Work with files
-- hashing
 - open/close, read/write, fflush, truncate
+syscall vs function call: https://www.youtube.com/watch?v=BQJBe4IbsvQ
 - opaque pointers
 - file descriptors + standart descriptors
 - IO operations
 
-H/w (ex15v-vex16)
+H/w (ex15)
 - calculate file's CRC
-- read a text file and count a symbol frequency (or symbol frequency)
+- read a text file and count a word frequency (or symbol frequency). Support ASCII only
+
+
+4. Sockets
+- server and client sockets
+
+H/w (ex16)
+- write a pcapng file with UDP traffic using wireshark. Create 2 programs: UDP server (that counts arrived packets)
+and UDP clien, that reads pcapng file, and sends UDP packets from file to your UDP server
+
 
 4. Compilation
 - compilation

@@ -8,7 +8,7 @@ run: ./ex09
 #include <stdlib.h>
 
 #define LEN_ARRAY(x) (sizeof(x)/sizeof(x[0]))
-#define LEN_STD(x) (sizeof(x)/sizeof(x[0])-1)
+#define LEN_STR(x) (sizeof(x)/sizeof(x[0])-1)
 
 int main(void) {
     // array without specified size (compiler will set it). This is immutable array!!!
