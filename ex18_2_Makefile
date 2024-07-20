@@ -1,0 +1,19 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -Wpedantic -std=c11
+SOURCES = ex17_logger.c ex17_keywords.c
+OBJECTS = $(SOURCES:.c=.o)
+TARGET = ex17_logger
+
+all: $(TARGET)
+
+$(TARGET): $(OBJECTS)
+	$(CC) $(CFLAGS) -o $@ $(OBJECTS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	rm -f $(OBJECTS) $(TARGET)
+
+cleanall: clean
+	rm -f *~

@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(ex17_dynamic C)
+
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wpedantic -std=c11")
+set(LIB_CFLAGS "-Wall" "-Wextra" "-Wpedantic" "-rdynamic" "-std=c11" "-fPIC" "-shared")
+
+
+set(SOURCES ex17_keywords.c)
+set(LIB_SOURCES ex17_logger.c)
+
+add_library(logger SHARED ${LIB_SOURCES})
+target_compile_options(logger PRIVATE ${LIB_CFLAGS})
+
+add_executable(ex17_dynamic ${SOURCES})
+target_link_libraries(ex17_dynamic logger)
+
+set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${CMAKE_BINARY_DIR}/ex17_dynamic;${CMAKE_BINARY_DIR}/liblogger.so")

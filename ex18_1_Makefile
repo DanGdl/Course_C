@@ -1,0 +1,16 @@
+
+all: build
+
+ex17_logger: ex17_logger.c
+	gcc -Wall -Wextra -Wpedantic -std=c11 -c ex17_logger.c -o ex17_logger.o
+
+ex17_keywords: ex17_keywords.c
+	gcc -Wall -Wextra -Wpedantic -std=c11 -c ex17_keywords.c -o ex17_keywords.o
+
+build: ex17_logger.o ex17_keywords.o
+	gcc -Wall -Wextra -Wpedantic -std=c11 ex17_logger.o ex17_keywords.o -o ex17_logger
+
+clean:
+	rm -rf *.o *~ core .depend .*.cmd *.ko *.mod.c .tmp_versions ex17_keywords ex17_logger
+
+.PHONY: clean

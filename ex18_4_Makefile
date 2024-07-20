@@ -1,0 +1,29 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -Wpedantic -std=c11
+LIB_CFLAGS = -Wall -Wextra -Wpedantic -rdynamic -fPIC -std=c11 -shared
+
+TARGET = ex17_dynamic
+SOURCES = ex17_keywords.c
+OBJECTS = $(SOURCES:.c=.o)
+
+LIB = liblogger.so
+LIB_SOURCES = ex17_logger.c
+LIB_OBJECTS = $(LIB_SOURCES:.c=.o)
+
+
+all: $(TARGET)
+
+$(TARGET): $(OBJECTS) $(LIB)
+	$(CC) $(CFLAGS) -o $@ $(OBJECTS) -L. $(LIB)
+
+$(LIB): $(LIB_SOURCES)
+	$(CC) $(LIB_CFLAGS) -c $< -o $@
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	rm -f $(OBJECTS) $(TARGET) $(LIB) $(LIB_OBJECTS)
+
+cleanall: clean
+	rm -f *~
