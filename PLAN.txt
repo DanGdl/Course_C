@@ -101,11 +101,16 @@ H/w (ex11 - ex12)
 - create a generic struct via macros (linked list, array, set) and test it
 
 2.7 Types
-- crossplatform types: inttypes.h (stdint.h):
+- crossplatform types: inttypes.h (stdint.h)
+- bitwise operations
 - Unicode
 
 H/w (ex13 - ex14)
 - support UTF-8 in anagram
+- function to count zeros and ones in a binary number
+- function to rotate bits of a given number
+- function to check whether a number is even or odd using bitwise operator
+- function that uses bitwise operations to perform a circular shift on a variable. Declare an unsigned 8-bit integer variable and use bitwise operations to perform a circular shift on the variable. Print the value of the variable before and after the operation.
 
 
 3. Work with files
