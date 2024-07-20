@@ -63,6 +63,7 @@ Print to terminal different geometric figures:
 - constants
 - code generation
 - conditional compilation
+code after preprocessor: gcc -E source.c -o source.i
 
 2.4 Arrays and pointers:
 - pointers: & and *, arithmetic
@@ -128,22 +129,64 @@ and UDP clien, that reads pcapng file, and sends UDP packets from file to your U
 
 
 4. Compilation
-- compilation
-- linking
-- libraries, mangling
-see also: math.h
-- static, extern
+- compilation & linking:
+    stage 1 preprocessor:                           gcc -E source.c -o source.i
+    stage 2 compilation (to intermediate assembly): gcc -S source.i -o source.s
+    stage 3 assembly:                               gcc -c source.s -o source.o
+    stage 4 linking:                                gcc source.o -o executable
+    compile few files:                              gcc file1.c file2.c file3.c -o executable
+- libraries: 
+    dynamic:    gcc -Wall -Wextra -Wpedantic file1.c file2.c file3.c -o executable -lm -lpthread -L. liblibrary.so
+    * "-L. llibrary" searches for liblibrary.a or liblibrary.so. You can force to use static lib with option "-static"
+    static:     gcc -Wall -Wextra -Wpedantic file1.c file2.c file3.c -o executable -L. liblibrary.a
+    create a static library:
+        *-rdynamic - optional parameter
+        gcc -c libfile1.c
+        gcc -c libfile2.c
+        gcc -c libfile3.c
+        ar cr liblibrary.a libfile1.o libfile2.o libfile3.o
+    create dynamic library:
+        gcc -c -fPIC libfile1.c
+        gcc -c -fPIC libfile2.c
+        gcc -c -fPIC libfile3.c
+        gcc -shared -fPIC -Wall -Wextra -Wpedantic -std=c11 -o liblibrary.so libfile1.o libfile2.o libfile3.o
+        -fPIC -> PIC = Position Independent Code
+Common compiler options:
+    -c - compile, but don't link
+    -o - name of output file
+    -L - path to directory where to look for libraries
+    -I - path to directory where to look for headers
+    -g - include debug info in binary file
+    -ggdb - include debug info in binary file for GNU debugger only!!
+    -ON - optimisation level, where N may be 1, 2, 3
+    -rdynamic - include symbols in library object files. Usefull if you going to use library with dlopen or debug
+New keywords:
+- static - stores a variable in specific location in memory; variable or function marked with static is local for c-file or function, where it specified
+- extern - allows to use a symbol (variable or function) exist in another object file
+
+Examples:
+gcc -E ex06_macros.c -o ex06_macros.i
+gcc -S ex06_macros.i -o ex06_macros.s
+gcc -c ex06_macros.s -o ex06_macros.o
+gcc ex06_macros.o -o ex06_macros
+./ex06_macros
+
+*for dynamic library:
+export LD_LIBRARY_PATH=/path/to/your/libs:$LD_LIBRARY_PATH
+
 
 5. Instruments
-- build: make, cmake
+- make, cmake
 - valgrind
 - gbd
+
 
 6. Processes
 - what is process
 - process lifecycle, environment, limits (ulimit -a)
 - planner and priorities
 - daemons
+
 
 7. IPC
 - fork
@@ -159,14 +202,17 @@ see also: math.h
 - semaphores
 - shared memory
 
+
 8. Threads
 - pthreads, LWP
 - threads vs processes
 - sychronisation
 
+
 9. Networking
 - sockets
 - async network interfaces
+
 
 3. Versions
 - https://en.wikipedia.org/wiki/ANSI_C#C9

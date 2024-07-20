@@ -2,7 +2,7 @@
 compile: gcc -Wall -Wextra -Wpedantic ex06_macros.c -o ex06   OR: gcc ex06_macros.c -o ex06
 run: ./ex06
 
-code after preprocessor: gcc -E ex06_macros.c >> file_name.txt
+code after preprocessor: gcc -E ex06_macros.c -o ex06_macros.i
 */
 
 #include <stdio.h>
