@@ -125,7 +125,7 @@ H/w (ex15)
 - read a text file and count a word frequency (or symbol frequency). Support ASCII only
 
 
-4. Sockets
+4. Sockets https://en.wikipedia.org/wiki/Berkeley_sockets
 - server and client sockets
 
 H/w (ex16)
@@ -182,8 +182,15 @@ export LD_LIBRARY_PATH=/path/to/your/libs:$LD_LIBRARY_PATH
 
 5. Instruments
 - make, cmake
-- valgrind
-- gbd
+- mangling https://en.wikipedia.org/wiki/Name_mangling
+- valgrind https://alexott.net/ru/writings/prog-checking/Valgrind.html:
+    valgrind --leak-check=full --show-leak-kinds=all -- ./a.out args > valgrind_out.txt
+    valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt ./a.out args
+- gbd https://eax.me/gdb/, https://github.com/cyrus-and/gdb-dashboard
+
+H/w (ex18):
+- write a make file (or cmake) for your previous homeworks
+- test your code with valgrind
 
 
 6. Processes

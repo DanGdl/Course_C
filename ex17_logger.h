@@ -11,6 +11,11 @@
 #define ERROR               "[ERROR]: "
 #define FATAL               "[FATAL]: "
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef struct Logger Logger_t;
 
 Logger_t* logger_init(const char* const path_log_file);
@@ -27,5 +32,9 @@ void logger_clean(Logger_t** const logger);
 size_t logger_log(Logger_t* const logger, const char* const tag, const char* const message, const char* const filename, int line, const char* const func_name);
 
 size_t logger_log_fatal(Logger_t* const logger, const char* const message, const char* const filename, int line, const char* const func_name);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
