@@ -194,9 +194,50 @@ H/w (ex18):
 
 
 6. Processes
-- what is process
-- process lifecycle, environment, limits (ulimit -a)
-- planner and priorities
+- what is process? https://www.geeksforgeeks.org/memory-layout-of-c-program/
+.text   - program itself, RO
+.DATA   - initialized global and static variables + constants from defines
+.BSS    - uninitialized global and static variables. The BSS segment is zero-initialized by the operating system before the program starts executing. 
+It is called "Block Started by Symbol" because the section starts with a symbol that defines the start of the block
+.STACK  - memory for your functions
+.HEAP   - memory for dynamic allocation
+
+$ size ex01
+   text    data     bss     dec     hex filename
+   1386     600       8    1994     7ca ./ex01
+
+$ objdump -x /bin/sh
+$ readelf -a /bin/sh
+
+ls /proc/<pid>/
+top     https://man7.org/linux/man-pages/man1/top.1.html
+htop    https://habr.com/ru/articles/316806/
+
+- programm finishing:
+void exit(...)              https://man7.org/linux/man-pages/man3/exit.3.html
+int at_exit(...)            https://man7.org/linux/man-pages/man3/atexit.3.html
+int on_exit(...)            https://man7.org/linux/man-pages/man3/on_exit.3.html
+void _exit(...)/_Exit(...)  https://man7.org/linux/man-pages/man2/exit.2.html
+void abort(...)             https://man7.org/linux/man-pages/man3/abort.3.html
+
+The C exit() function is a standard library function used to terminate the calling process.
+When exit() is called, any open file descriptors belonging to the process are closed and 
+any children of the process are inherited by process 1, init, and the process parent is sent a SIGCHLD signal.
+It is defined inside the <stdlib.h> header file.
+
+The C abort() function is the standard library function that can be used to exit the C program.
+But unlike the exit() function, abort() may not close files that are open.
+It may also not delete temporary files and may not flush the stream buffer.
+Also, it does not call functions registered with atexit().
+
+- Environment https://pubs.opengroup.org/onlinepubs/7908799/xbd/envvar.html
+$ env
+
+- limits https://man7.org/linux/man-pages/man2/getrlimit.2.html
+$ ulimit -a
+
+- planner and priorities https://www.man7.org/linux/man-pages/man2/setpriority.2.html
+
 - daemons
 
 
