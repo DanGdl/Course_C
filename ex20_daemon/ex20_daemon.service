@@ -1,0 +1,9 @@
+[Unit]
+Description=Otus daemon.
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ots_daemon
+
+[Install]
+WantedBy=multi-user.target
