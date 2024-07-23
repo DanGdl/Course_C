@@ -197,7 +197,7 @@ H/w (ex18):
 - test your code with valgrind
 
 
-6. Processes
+6. Processes (ex19 - ex20)
 - what is process? https://www.geeksforgeeks.org/memory-layout-of-c-program/
 .text   - program itself, RO
 .DATA   - initialized global and static variables + constants from defines
@@ -242,21 +242,29 @@ $ ulimit -a
 
 - planner and priorities https://www.man7.org/linux/man-pages/man2/setpriority.2.html
 
-- daemons
+- daemons - program that runs as background process without direct interaction with user.
+Usualy such process has a suffix d: syslogd, ftpd, sshd etc.
+Daemon usualy disconnected from control terminals and user group (to prohibit any interaction with user)
+Default contracts:
+- lock file in /var/run/daemon_name.pid
+- config file in /etc/daemon_name.conf
+- launch via /etc/init.d/daemon-name
+- reload via SIGHUP
+- option to work without daemonisation
+Example: https://github.com/jirihnidek/daemon
 
 
 7. IPC
+- signals
+- local sockets
 - fork
 - exec
 - system
 - wait
-- signals
 - pipe
 - popen
 - fifo
-- local sockets
 - queues
-- semaphores
 - shared memory
 
 
@@ -267,7 +275,6 @@ $ ulimit -a
 
 
 9. Networking
-- sockets
 - async network interfaces
 
 
