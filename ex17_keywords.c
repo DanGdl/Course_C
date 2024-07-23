@@ -47,10 +47,15 @@ int main(int argc, char** argv) {
     print_lol_nonstatic();
 #endif
 
+#ifdef SAY_HELLO
+    puts("Hello User!");
+#endif
+
     const char* const path = argv[1];
     Logger_t* logger = logger_init(path);
     if (logger == NULL) {
         printf("Failed to create logger\n");
+        return 0;
     }
 
     char buffer[28] = { 0 };

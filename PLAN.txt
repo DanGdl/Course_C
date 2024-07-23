@@ -165,6 +165,10 @@ Common compiler options:
     -ggdb - include debug info in binary file for GNU debugger only!!
     -ON - optimisation level, where N may be 1, 2, 3
     -rdynamic - include symbols in library object files. Usefull if you going to use library with dlopen or debug
+
+Also you can provide a define with gcc using -D option:
+gcc -Wall -Wextra -Wpedantic -DSAY_HELLO ex17_keywords.c ex17_logger.c -o ex17   OR: gcc -DSAY_HELLO ex17_keywords.c ex17_logger.c -o ex17
+
 New keywords:
 - static - stores a variable in specific location in memory; variable or function marked with static is local for c-file or function, where it specified
 - extern - allows to use a symbol (variable or function) exist in another object file
