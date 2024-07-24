@@ -217,6 +217,8 @@ ls /proc/<pid>/
 top     https://man7.org/linux/man-pages/man1/top.1.html
 htop    https://habr.com/ru/articles/316806/
 
+Deeper dive: https://youtu.be/3tr9qinPgYc?t=337
+
 - programm finishing:
 void exit(...)              https://man7.org/linux/man-pages/man3/exit.3.html
 int at_exit(...)            https://man7.org/linux/man-pages/man3/atexit.3.html
@@ -242,6 +244,15 @@ $ ulimit -a
 
 - planner and priorities https://www.man7.org/linux/man-pages/man2/setpriority.2.html
 
+
+7. IPC
+- signals       https://www.man7.org/linux/man-pages/man2/sigaction.2.html
+- exec
+- system
+- fork, wait, pipe, popen
+- fifo, queues, shared memory
+- local sockets
+
 - daemons - program that runs as background process without direct interaction with user.
 Usualy such process has a suffix d: syslogd, ftpd, sshd etc.
 Daemon usualy disconnected from control terminals and user group (to prohibit any interaction with user)
@@ -252,20 +263,6 @@ Default contracts:
 - reload via SIGHUP
 - option to work without daemonisation
 Example: https://github.com/jirihnidek/daemon
-
-
-7. IPC
-- signals
-- local sockets
-- fork
-- exec
-- system
-- wait
-- pipe
-- popen
-- fifo
-- queues
-- shared memory
 
 
 8. Threads
