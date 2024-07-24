@@ -6,7 +6,6 @@ run: ./ex16_server
 #include <stdio.h>
 #include <errno.h>      // errors
 #include <stdlib.h>
-#include <stdlib.h>
 #include <unistd.h>		// close
 #include <string.h>     // error code to string
 #include <arpa/inet.h>
@@ -33,7 +32,6 @@ int main(void) {
 	int sent = -1;
 	int rc = -1;
 
-#if 1
     // open TCP socket
     server_fd = socket(PF_INET, SOCK_STREAM, 0);
     if (server_fd < 0) {
@@ -100,7 +98,7 @@ int main(void) {
     // }
     close(server_fd);
     server_fd = -1;
-#endif
+    
 
     puts("UDP server");
     // open UDP socket
