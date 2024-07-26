@@ -246,12 +246,13 @@ $ ulimit -a
 
 
 7. IPC
-- signals       https://www.man7.org/linux/man-pages/man2/sigaction.2.html
-- exec
 - system
-- fork, wait, pipe, popen
-- fifo, queues, shared memory
+- exec
+- fork, wait, pipe, popen       https://linux.die.net/man/2/waitpid
+                                https://linux.die.net/man/2/fork
+- signals                       https://www.man7.org/linux/man-pages/man2/sigaction.2.html
 - local sockets
+- fifo, queues, shared memory
 
 - daemons - program that runs as background process without direct interaction with user.
 Usualy such process has a suffix d: syslogd, ftpd, sshd etc.
