@@ -51,5 +51,18 @@ int main(void) {
         printf("Failed to wait for pid %d: %s\n", pid, strerror(errno));
     }
     
+    puts("POPEN");
+    FILE* f = popen("ls -lh", "r");
+    if (f != NULL) {
+        int rc = 0;
+        do {
+            rc = fread(output, sizeof(output[0]), LEN_STR(output), f);
+            if (rc > 0) {
+                output[rc] = '\0';
+                printf("%s", output);
+            }
+        } while(rc > 0);
+        pclose(f);
+    }
     return 0;
 }
