@@ -4,6 +4,7 @@ run: ./ex05
 */
 
 #include <stdio.h>
+#include <stdarg.h>
 
 
 void print_number(int i) {
@@ -13,6 +14,16 @@ void print_number(int i) {
 // forward declaration
 int print_double(double d);
 
+void elastic(int count, ...) {
+    va_list args;
+    va_start(args, count);
+    for (int i = 0; i < count; i++) {
+        int j = va_arg(args, int);
+        printf("Argument %d is %d\n", i, j);
+    }
+    va_end(args);
+}
+
 int main(void) {
     int i = 15;
     print_number(i);
@@ -20,6 +31,8 @@ int main(void) {
     double f = 50.25;
     int rc = print_double(f);
     printf("rc %d\n", rc);
+
+    elastic(5, 10, 20, 30, 40, 50);
     return 0;
 }
 
