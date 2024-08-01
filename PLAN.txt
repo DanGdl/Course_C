@@ -248,11 +248,17 @@ $ ulimit -a
 7. IPC
 - system
 - exec
-- fork, wait, pipe, popen       https://linux.die.net/man/2/waitpid
-                                https://linux.die.net/man/2/fork
+- fork, wait, pipe, popen       
+    https://linux.die.net/man/2/waitpid
+    https://linux.die.net/man/2/fork  (https://www.man7.org/linux/man-pages/man2/clone.2.html)
+    
 - signals                       https://www.man7.org/linux/man-pages/man2/sigaction.2.html
 - local sockets
 - fifo, queues, shared memory
+    https://www.man7.org/linux/man-pages/man3/mkfifo.3.html
+    https://www.man7.org/linux/man-pages/man3/mq_open.3.html
+    https://www.man7.org/linux/man-pages/man7/sem_overview.7.html
+    https://www.man7.org/linux/man-pages/man7/shm_overview.7.html
 
 - daemons - program that runs as background process without direct interaction with user.
 Usualy such process has a suffix d: syslogd, ftpd, sshd etc.
@@ -264,6 +270,10 @@ Default contracts:
 - reload via SIGHUP
 - option to work without daemonisation
 Example: https://github.com/jirihnidek/daemon
+
+H/w:
+- read pcap using memory mapping
+- implement pcap reader as 2 processes: one reads file, second - sends to your server, they interacts via IPC
 
 
 8. Threads
