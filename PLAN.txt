@@ -277,9 +277,18 @@ H/w:
 
 
 8. Threads
-- pthreads, LWP
 - threads vs processes
+- pthreads, LWP
 - sychronisation
+https://en.wikipedia.org/wiki/Light-weight_process
+https://www.gnu.org/software/libc/manual/html_node/Threads.html
+https://stackoverflow.com/questions/10484355/what-is-the-difference-between-lightweight-process-and-thread
+https://www.answers.com/computers/What_is_the_difference_between_LWP_and_threads
+https://en.wikipedia.org/wiki/Non-blocking_algorithm
+
+H/w:
+- implement pcap reader as 2 threads: one reads file, second - sends to your server
+- try to implement a thread pool
 
 
 9. Networking
